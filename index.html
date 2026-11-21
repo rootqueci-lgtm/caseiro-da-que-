@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Caseirinhos da Que | Confeitaria caseira</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;700&display=swap">
+<style>
+:root{
+  --bg:#FFF6EE;--pink:#FFD9E3;--card:#FFFFFF;--text:#4A2B20;--muted:#7A5648;
+  --btn:#D63A70;--btn-text:#FFFFFF;--line:#F3C9D5;--biscuit:#F0C98F;--biscuit2:#E3AE6B;--filling:#B8743A;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#2B1812;--pink:#4A2830;--card:#3B2319;--text:#FFEFE6;--muted:#E2C3B4;--btn:#FF8FAB;--btn-text:#3A1620;--line:#5C3540;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#2B1812;--pink:#4A2830;--card:#3B2319;--text:#FFEFE6;--muted:#E2C3B4;--btn:#FF8FAB;--btn-text:#3A1620;--line:#5C3540;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Nunito",system-ui,sans-serif;font-size:17px;line-height:1.6}
+h1,h2,h3{font-family:"Fredoka","Nunito",system-ui,sans-serif;font-weight:600;line-height:1.15;margin:0}
+a{color:inherit}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.btn{display:inline-block;background:var(--btn);color:var(--btn-text);font-family:"Fredoka",system-ui,sans-serif;font-weight:500;text-decoration:none;padding:12px 22px;border-radius:999px;font-size:1.05rem}
+.btn:hover{filter:brightness(1.07)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--text);outline-offset:3px}
+.btn.small{padding:8px 16px;font-size:.95rem}
+header{background:var(--pink)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:14px;padding-bottom:14px}
+.brand{font-family:"Fredoka",system-ui,sans-serif;font-weight:600;font-size:1.25rem}
+.hero{background:var(--pink);padding:20px 0 44px}
+.hero .wrap{display:grid;gap:24px;align-items:center}
+.hero h1{font-size:clamp(2.2rem,8vw,3.6rem)}
+.hero p{font-size:1.15rem;color:var(--muted);max-width:30em;margin:14px 0 22px}
+.casa{width:min(320px,80%);justify-self:center;animation:float 4s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-8px)}}
+.scallop{height:18px;background:radial-gradient(circle at 18px 0,var(--pink) 17px,transparent 18px) 0 0/36px 18px repeat-x}
+section{padding:48px 0}
+h2{font-size:clamp(1.7rem,6vw,2.3rem);margin-bottom:8px}
+.lead{color:var(--muted);margin:0 0 26px}
+.menu{display:grid;gap:16px}
+.item{background:var(--card);border:2px dashed var(--line);border-radius:26px;padding:22px}
+.item.star{border-style:solid;border-color:var(--btn)}
+.item .emo{font-size:2rem;line-height:1}
+.item h3{font-size:1.4rem;margin:10px 0 6px}
+.item p{margin:0 0 14px;color:var(--muted)}
+.tag{display:inline-block;background:var(--btn);color:var(--btn-text);font-family:"Fredoka",system-ui,sans-serif;font-size:.9rem;padding:2px 12px;border-radius:999px;margin-left:8px;vertical-align:middle}
+.steps{background:var(--pink)}
+.steps ol{list-style:none;margin:20px 0 0;padding:0;display:grid;gap:14px}
+.steps li{display:flex;gap:14px;align-items:center;background:var(--card);border-radius:22px;padding:16px 18px}
+.steps li b{flex:none;width:38px;height:38px;border-radius:50%;background:var(--btn);color:var(--btn-text);display:grid;place-items:center;font-family:"Fredoka",system-ui,sans-serif}
+.cta{text-align:center}
+.cta .btn{margin:6px}
+footer{padding:28px 0 96px;text-align:center;color:var(--muted);font-size:.95rem}
+footer a{font-weight:700}
+.fab{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));box-shadow:0 6px 18px rgba(0,0,0,.22);z-index:5}
+.prods{display:grid;gap:16px;margin-bottom:20px}
+.pcard,.sum{background:var(--card);border:2px dashed var(--line);border-radius:26px;padding:20px}
+.pcard h3,.sum h3{font-size:1.3rem}
+.price{margin:4px 0 12px;color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{min-height:44px;padding:8px 14px;border-radius:999px;border:2px solid var(--line);background:var(--bg);color:var(--text);font:700 1rem "Nunito",system-ui,sans-serif;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--btn);color:var(--btn-text);border-color:var(--btn)}
+.chip:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--text);outline-offset:2px}
+.cust,.note{display:block;margin-top:12px;font-weight:700;font-size:.95rem}
+.cust input,.note textarea{display:block;width:100%;margin-top:6px;padding:10px 12px;border-radius:14px;border:2px solid var(--line);background:var(--bg);color:var(--text);font:inherit}
+.sum ul{list-style:none;margin:12px 0;padding:0}
+.sum li{display:flex;justify-content:space-between;gap:12px;padding:6px 0;border-bottom:1px dotted var(--line)}
+.sum .empty{color:var(--muted);border:0}
+.total{font-family:"Fredoka",system-ui,sans-serif;font-size:1.3rem;margin:14px 0 4px}
+.fine{font-size:.9rem;color:var(--muted);margin:0 0 14px}
+#send[aria-disabled="true"]{opacity:.5;pointer-events:none}
+@media (min-width:760px){.prods{grid-template-columns:1fr 1fr}}
+[hidden]{display:none!important}
+@media (min-width:760px){
+  .hero .wrap{grid-template-columns:1.2fr 1fr}
+  .menu{grid-template-columns:1fr 1fr}
+  .item.star{grid-column:1/-1}
+  .steps ol{grid-template-columns:repeat(3,1fr)}
+}
+@media (prefers-reduced-motion:reduce){.casa{animation:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <span class="brand">Caseirinhos da Que ♡</span>
+    <a class="btn small" data-wa="Oi! Vim pelo site e quero fazer uma encomenda." href="#">Pedir no WhatsApp</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Casadinhos feitos com muito carinho</h1>
+      <p>Casadinho, bolos, rosca húngara, pão caseiro e biscoitos personalizados. Tudo por encomenda, direto pelo WhatsApp.</p>
+      <a class="btn" href="#pedido">Montar meu pedido</a>
+    </div>
+    <svg class="casa" viewBox="0 0 300 240" role="img" aria-label="Casadinho sorridente">
+      <ellipse cx="150" cy="218" rx="105" ry="12" fill="#000" opacity=".12"/>
+      <rect x="40" y="140" width="220" height="56" rx="28" fill="var(--biscuit2)"/>
+      <path d="M46 128h208v22c0 8-8 12-14 8-6 8-18 8-22 0-6 8-20 8-24 0-6 8-20 8-24 0-6 8-20 8-24 0-6 8-18 8-22 0-6 4-14 0-14-8z" fill="var(--filling)"/>
+      <path d="M40 128C40 62 90 40 150 40s110 22 110 88z" fill="var(--biscuit)"/>
+      <g fill="#fff" opacity=".85"><circle cx="85" cy="70" r="4"/><circle cx="215" cy="72" r="4"/><circle cx="150" cy="56" r="3.5"/><circle cx="108" cy="52" r="3"/><circle cx="195" cy="54" r="3"/></g>
+      <g fill="#4A2B20"><circle cx="112" cy="98" r="6"/><circle cx="188" cy="98" r="6"/></g>
+      <path d="M135 106q15 14 30 0" fill="none" stroke="#4A2B20" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="92" cy="110" r="11" fill="#FF8FAB" opacity=".7"/><circle cx="208" cy="110" r="11" fill="#FF8FAB" opacity=".7"/>
+      <path d="M150 178c-14-10-24-18-24-28a12 12 0 0 1 24-4 12 12 0 0 1 24 4c0 10-10 18-24 28z" fill="#FF8FAB" transform="translate(0 -4) scale(.9) translate(16 14)"/>
+    </svg>
+  </div>
+</div>
+<div class="scallop" aria-hidden="true"></div>
+
+<main>
+  <section id="cardapio">
+    <div class="wrap">
+      <h2>O que a gente faz</h2>
+      <p class="lead">Escolha seu favorito e peça pelo WhatsApp.</p>
+      <div class="menu">
+        <article class="item star">
+          <div class="emo" aria-hidden="true">🍪</div>
+          <h3>Casadinho <span class="tag">o queridinho da casa</span></h3>
+          <p>Dois biscoitinhos macios com recheio no meio. É o nosso xodó.</p>
+          <a class="btn small" data-wa="Oi! Quero encomendar casadinhos." href="#">Pedir casadinhos</a>
+        </article>
+        <article class="item">
+          <div class="emo" aria-hidden="true">🎂</div>
+          <h3>Bolos</h3>
+          <p>Bolos caseiros para o café do dia a dia ou para comemorar.</p>
+          <a class="btn small" data-wa="Oi! Quero encomendar um bolo." href="#">Pedir bolo</a>
+        </article>
+        <article class="item">
+          <div class="emo" aria-hidden="true">🥐</div>
+          <h3>Rosca húngara</h3>
+          <p>Fofinha e enrolada, perfeita pro café da tarde.</p>
+          <a class="btn small" data-wa="Oi! Quero encomendar rosca húngara." href="#">Pedir rosca</a>
+        </article>
+        <article class="item">
+          <div class="emo" aria-hidden="true">🍞</div>
+          <h3>Pão caseiro</h3>
+          <p>Feito em casa, com cheirinho de padaria.</p>
+          <a class="btn small" data-wa="Oi! Quero encomendar pão caseiro." href="#">Pedir pão</a>
+        </article>
+        <article class="item">
+          <div class="emo" aria-hidden="true">🎀</div>
+          <h3>Biscoito personalizado</h3>
+          <p>Do jeito que você imaginar: aniversário, lembrancinha ou presente.</p>
+          <a class="btn small" data-wa="Oi! Quero encomendar biscoitos personalizados." href="#">Pedir biscoitos</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="pedido">
+    <div class="wrap">
+      <h2>Monte seu pedido</h2>
+      <p class="lead">Escolha as quantidades, veja o valor e envie tudo pronto pelo WhatsApp.</p>
+      <div class="prods" id="prods"></div>
+      <div class="sum">
+        <h3>Seu pedido</h3>
+        <ul id="lines"></ul>
+        <label class="note">Observações (data, sabor, tema do biscoito...)<textarea id="note" rows="2"></textarea></label>
+        <p class="total">Total: <b id="total">R$ 0,00</b></p>
+        <p class="fine">O valor final é confirmado no WhatsApp.</p>
+        <a class="btn" id="send" href="#" aria-disabled="true">Enviar pedido no WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps" id="como">
+    <div class="wrap">
+      <h2>Como encomendar</h2>
+      <ol>
+        <li><b>1</b><span>Escolha o que você quer</span></li>
+        <li><b>2</b><span>Chame no WhatsApp</span></li>
+        <li><b>3</b><span>Combine os detalhes e pronto</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Bora adoçar o seu dia?</h2>
+      <p class="lead">Chame a gente e faça sua encomenda.</p>
+      <a class="btn" data-wa="Oi! Vim pelo site e quero fazer uma encomenda." href="#">Chamar no WhatsApp</a>
+      <a class="btn" id="ig" href="#" target="_blank" rel="noopener" hidden>Ver no Instagram</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Caseirinhos da Que ♡ Feito com carinho<br>
+  <a data-wa="Oi! Vim pelo site." href="#">WhatsApp</a>
+  <span id="igsep" hidden> · </span><a id="ig2" href="#" target="_blank" rel="noopener" hidden>Instagram</a></div>
+</footer>
+
+<a class="btn fab" data-wa="Oi! Vim pelo site e quero fazer uma encomenda." href="#">WhatsApp</a>
+
+<script>
+// Edite aqui: número com 55 + DDD + número (13 dígitos) e o usuário do Instagram (sem @)
+var WA = "5527998340551";
+var IG = "caseirinhosda_que";
+document.querySelectorAll("[data-wa]").forEach(function(a){
+  a.href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(a.getAttribute("data-wa"));
+  a.target = "_blank"; a.rel = "noopener";
+});
+if (IG) {
+  ["ig","ig2","igsep"].forEach(function(id){ document.getElementById(id).hidden = false; });
+  ["ig","ig2"].forEach(function(id){ document.getElementById(id).href = "https://instagram.com/" + IG; });
+}
+var PRODUCTS=[{id:'casadinho',name:'Casadinho',emo:'🍪',type:'kg',price:75},{id:'bolo',name:'Bolo',emo:'🎂',type:'un',price:25},{id:'rosca',name:'Rosca húngara',emo:'🥐',type:'un',price:5},{id:'pao',name:'Pão caseiro',emo:'🍞',type:'un',price:15},{id:'biscoito',name:'Biscoito personalizado',emo:'🎀',type:'kg',price:75}];
+function brl(v){return v.toLocaleString('pt-BR',{style:'currency',currency:'BRL'}).replace(/\u00a0/g,' ');}
+function qlabel(p,q){if(p.type==='kg'){return q>=1000?(q/1000).toString().replace('.',',')+' kg':q+' g';}return q+(q===1?' unidade':' unidades');}
+function cost(p,q){return p.type==='kg'?p.price*q/1000:p.price*q;}
+var st={},els={};
+PRODUCTS.forEach(function(p){
+  st[p.id]={q:0,custom:false};
+  var opts=p.type==='kg'?[100,200,300,400,500]:[1,2,3,4,5];
+  var card=document.createElement('div');card.className='pcard';
+  card.innerHTML='<h3><span aria-hidden="true">'+p.emo+'</span> '+p.name+'</h3><p class="price">'+brl(p.price)+(p.type==='kg'?' o kg':' a unidade')+'</p><div class="chips"></div><label class="cust" hidden>'+(p.type==='kg'?'Quantidade em gramas':'Quantidade de unidades')+'<input type="number" inputmode="numeric" min="1" max="'+(p.type==='kg'?20000:99)+'"></label>';
+  var chips=card.querySelector('.chips'),lab=card.querySelector('.cust'),inp=lab.querySelector('input');
+  var btns=opts.map(function(o){var b=document.createElement('button');b.type='button';b.className='chip';b.textContent=p.type==='kg'?o+' g':o;b.onclick=function(){var s=st[p.id];s.custom=false;s.q=(s.q===o)?0:o;upd();};chips.appendChild(b);return b;});
+  var cb=document.createElement('button');cb.type='button';cb.className='chip';cb.textContent='Valor personalizado';
+  cb.onclick=function(){var s=st[p.id];s.custom=!s.custom;s.q=0;inp.value='';upd();if(s.custom){inp.focus();}};
+  chips.appendChild(cb);
+  inp.oninput=function(){var n=parseInt(inp.value,10)||0;st[p.id].q=Math.max(0,Math.min(n,parseInt(inp.max,10)));upd();};
+  els[p.id]={btns:btns,cb:cb,lab:lab,opts:opts};
+  document.getElementById('prods').appendChild(card);
+});
+function upd(){
+  var lines=[],total=0;
+  PRODUCTS.forEach(function(p){
+    var s=st[p.id],e=els[p.id];
+    e.btns.forEach(function(b,i){b.setAttribute('aria-pressed',String(!s.custom&&s.q===e.opts[i]));});
+    e.cb.setAttribute('aria-pressed',String(s.custom));
+    e.lab.hidden=!s.custom;
+    if(s.q>0){var c=cost(p,s.q);total+=c;lines.push({t:p.name+' '+qlabel(p,s.q),c:c});}
+  });
+  document.getElementById('lines').innerHTML=lines.length?lines.map(function(l){return '<li><span>'+l.t+'</span><span>'+brl(l.c)+'</span></li>';}).join(''):'<li class="empty">Nada escolhido ainda.</li>';
+  document.getElementById('total').textContent=brl(total);
+  var send=document.getElementById('send');
+  send.setAttribute('aria-disabled',String(!lines.length));
+  if(lines.length){
+    var note=document.getElementById('note').value.trim();
+    var msg='Oi! Vim pelo site da Caseirinhos da Que e quero fazer este pedido:\n'+lines.map(function(l){return '- '+l.t+' ('+brl(l.c)+')';}).join('\n')+'\nTotal: '+brl(total)+(note?'\nObservações: '+note:'');
+    send.href='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);send.target='_blank';send.rel='noopener';
+  }else{send.href='#';}
+}
+document.getElementById('note').oninput=upd;
+upd();
+</script>
+</body>
+</html>
